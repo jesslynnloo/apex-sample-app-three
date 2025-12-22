@@ -40,7 +40,7 @@ prompt APPLICATION 2345 - apex-sample-app
 --       Items:                   41
 --       Validations:              2
 --       Processes:               21
---       Regions:                 64
+--       Regions:                 66
 --       Buttons:                 37
 --       Dynamic Actions:         16
 --     Shared Components:
@@ -112,7 +112,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_value_01=>'apex-sample-app'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
-,p_version_scn=>45907131688195
+,p_version_scn=>45907177199706
 ,p_print_server_type=>'NATIVE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'
@@ -1531,6 +1531,31 @@ wwv_flow_imp_page.create_page_plug(
 ,p_menu_id=>wwv_flow_imp.id(29757233813879347)
 ,p_plug_source_type=>'NATIVE_BREADCRUMB'
 ,p_menu_template_id=>4072363345357175094
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(10671044122236301)
+,p_plug_name=>'New'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>4072358936313175081
+,p_plug_display_sequence=>10
+,p_location=>null
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(10671107301236302)
+,p_plug_name=>'New'
+,p_title=>'test'
+,p_parent_plug_id=>wwv_flow_imp.id(10671044122236301)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>4072358936313175081
+,p_plug_display_sequence=>10
+,p_location=>null
+,p_plug_source=>'<h1>Test.</h1>'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
 );
 end;
 /
@@ -7310,4 +7335,4 @@ prompt  ...done
 
 
 
--- sqlcl_snapshot {"hash":"8c829fbef4140ad352f9d0b311e5987a9ca9dc6f","type":"APEX_APPLICATIONS","name":"f2345","schemaName":"JESS_RC_5","sxml":""}
+-- sqlcl_snapshot {"hash":"fb970bbccec69b8e07f3e0a16079b6606fb276cc","type":"APEX_APPLICATIONS","name":"f2345","schemaName":"JESS_RC_5","sxml":""}
