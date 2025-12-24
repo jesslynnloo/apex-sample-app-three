@@ -19,6 +19,20 @@
         url: 'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
         page: 3 # Dev Page
 
+  - # ====== Entry: rc-page ======================================
+    id: 11021100963212105
+    identification: 
+      name: rc-page
+      page-number: 2
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # rc-page
+
   - # ====== Entry: Home =========================================
     id: 19663281789553747
     identification: 
