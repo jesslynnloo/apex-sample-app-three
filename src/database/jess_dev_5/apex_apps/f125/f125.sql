@@ -36,11 +36,11 @@ prompt APPLICATION 125 - apex-sample-app
 --   Exported By:     JESS_DEV_5
 --   Flashback:       0
 --   Export Type:     Application Export
---     Pages:                     26
+--     Pages:                     27
 --       Items:                   41
 --       Validations:              2
 --       Processes:               21
---       Regions:                 63
+--       Regions:                 66
 --       Buttons:                 37
 --       Dynamic Actions:         16
 --     Shared Components:
@@ -50,7 +50,7 @@ prompt APPLICATION 125 - apex-sample-app
 --       Navigation:
 --         Lists:                  8
 --         Breadcrumbs:            1
---           Entries:              2
+--           Entries:              3
 --       Security:
 --         Authentication:         1
 --         Authorization:          3
@@ -112,7 +112,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_value_01=>'apex-sample-app'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
-,p_version_scn=>45905913361129
+,p_version_scn=>45907670603899
 ,p_print_server_type=>'NATIVE'
 ,p_file_storage=>'DB'
 ,p_is_pwa=>'Y'
@@ -163,7 +163,7 @@ wwv_flow_imp_shared.create_list(
  p_id=>wwv_flow_imp.id(19663538828553752)
 ,p_name=>'Navigation Menu'
 ,p_list_status=>'PUBLIC'
-,p_version_scn=>45905885698387
+,p_version_scn=>45907670402938
 );
 wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(19678555209553939)
@@ -172,6 +172,15 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
 ,p_list_item_icon=>'fa-home'
 ,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(11011640948128327)
+,p_list_item_display_sequence=>20
+,p_list_item_link_text=>'Dev Page'
+,p_list_item_link_target=>'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_icon=>'fa-file-o'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'3'
 );
 wwv_flow_imp_shared.create_list_item(
  p_id=>wwv_flow_imp.id(19854702740563709)
@@ -1249,6 +1258,12 @@ wwv_flow_imp_shared.create_menu(
 ,p_name=>'Breadcrumb'
 );
 wwv_flow_imp_shared.create_menu_option(
+ p_id=>wwv_flow_imp.id(11012543191128334)
+,p_short_name=>'Dev Page'
+,p_link=>'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+,p_page_id=>3
+);
+wwv_flow_imp_shared.create_menu_option(
  p_id=>wwv_flow_imp.id(19663281789553747)
 ,p_short_name=>'Home'
 ,p_link=>'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
@@ -1490,6 +1505,57 @@ wwv_flow_imp_page.create_page_plug(
   'expand_shortcuts', 'N',
   'output_as', 'HTML',
   'show_line_breaks', 'Y')).to_clob
+);
+end;
+/
+prompt --application/pages/page_00003
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>3
+,p_name=>'Dev Page'
+,p_alias=>'DEV-PAGE'
+,p_step_title=>'Dev Page'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(11012013315128330)
+,p_plug_name=>'Breadcrumb'
+,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>2531463326621247859
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_menu_id=>wwv_flow_imp.id(19663044440553746)
+,p_plug_source_type=>'NATIVE_BREADCRUMB'
+,p_menu_template_id=>4072363345357175094
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(11012931035130401)
+,p_plug_name=>'New'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>4072358936313175081
+,p_plug_display_sequence=>10
+,p_location=>null
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(11013082416130402)
+,p_plug_name=>'New'
+,p_parent_plug_id=>wwv_flow_imp.id(11012931035130401)
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_plug_template=>4072358936313175081
+,p_plug_display_sequence=>10
+,p_location=>null
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'<h1>This is the Dev page</h1>',
+'<p>This is the dev paragraph</p>'))
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
 );
 end;
 /
@@ -7269,4 +7335,4 @@ prompt  ...done
 
 
 
--- sqlcl_snapshot {"hash":"51c29452ecef8670ce4f045f8e3190a0462b2a22","type":"APEX_APPLICATIONS","name":"f125","schemaName":"JESS_DEV_5","sxml":""}
+-- sqlcl_snapshot {"hash":"69ad164d854b1739a6ae11c4b56fb6bec8ec9b1a","type":"APEX_APPLICATIONS","name":"f125","schemaName":"JESS_DEV_5","sxml":""}
