@@ -5,12 +5,39 @@
     name: Navigation Menu
 
   subscription: 
-    version-number: 45905885698387
+    version-number: 45907670402938
 
   source: 
     type: Static Values
 
   entries: 
+  - # ====== Entry: Dev Page =====================================
+    id: 11011640948128327
+    label: 
+      label: Dev Page
+
+    icon: 
+      image/icon-css-classes: fa-file-o
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 3
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+        page: 3 # Dev Page
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
   - # ====== Entry: Home =========================================
     id: 19678555209553939
     label: 
